@@ -137,6 +137,38 @@
       <h2>First Class Percentage</h2>
       <div class="percentage" id="percentage">0%</div>
     </div>
+
+    <!-- Subtle donate joke link -->
+    <div style="margin-top: 10px; font-size: 0.8em; text-align: center; opacity: 0.85;">
+      <a href="#" onclick="openExitTaxPopup(); return false;">
+        Donate to my trip exit taxes here:
+      </a>
+    </div>
+  </div>
+
+  <!-- Popup -->
+  <div id="exitTaxPopup" style="
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    z-index: 999;
+    align-items: center;
+    justify-content: center;
+  " onclick="closeExitTaxPopup()">
+    <div style="
+      background: white;
+      color: #1a1a1a;
+      padding: 14px 18px;
+      border-radius: 8px;
+      text-align: center;
+      font-size: 0.9em;
+    " onclick="event.stopPropagation();">
+      <div>Just kidding 😉</div>
+      <div style="margin-top: 8px;">
+        <a href="#" onclick="closeExitTaxPopup(); return false;">Close</a>
+      </div>
+    </div>
   </div>
 
   <script>
@@ -154,6 +186,15 @@
     document.getElementById("totalFlights").textContent = totalFlights;
     document.getElementById("firstClassFlights").textContent = firstClassFlights;
     document.getElementById("percentage").textContent = percent + "%";
+
+    // Popup controls
+    function openExitTaxPopup() {
+      document.getElementById("exitTaxPopup").style.display = "flex";
+    }
+
+    function closeExitTaxPopup() {
+      document.getElementById("exitTaxPopup").style.display = "none";
+    }
   </script>
 </body>
 </html>
