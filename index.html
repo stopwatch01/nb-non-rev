@@ -105,6 +105,57 @@
       color: var(--ua-blue);
     }
 
+    /* ===== Flight Log Table ===== */
+
+    .table-wrapper {
+      margin-top: 40px;
+      background-color: var(--box-bg);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      color: var(--text-dark);
+    }
+
+    .table-title {
+      text-align: center;
+      margin: 0 0 20px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .flights-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .flights-table th {
+      background-color: var(--accent);
+      color: #333;
+      font-weight: 600;
+      padding: 12px;
+      text-align: center;
+      border-bottom: 2px solid #ddd;
+    }
+
+    .flights-table td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+      height: 44px;
+    }
+
+    .flights-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    @media (max-width: 700px) {
+      .flights-table {
+        font-size: 0.85rem;
+      }
+    }
+
     @media (max-width: 600px) {
       .stats-row {
         grid-template-columns: 1fr;
@@ -141,8 +192,37 @@
     <!-- Subtle donate joke link -->
     <div style="margin-top: 25px; font-size: 0.8em; text-align: center; opacity: 0.85;">
       <a href="#" onclick="openExitTaxPopup(); return false;" style="font-size: 20px; color: white">
-        Click here to Donate to my trip exit taxes
+        Click here to donate to my trip exit taxes
       </a>
+    </div>
+
+    <!-- Flight Log Table -->
+    <div class="table-wrapper">
+      <h2 class="table-title">Flight Log</h2>
+
+      <table class="flights-table">
+        <thead>
+          <tr>
+            <th>Flight #</th>
+            <th>Departure</th>
+            <th>Arrival</th>
+            <th>Aircraft</th>
+            <th>Seat #</th>
+            <th>First Class</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
@@ -176,18 +256,15 @@
     const totalFlights = 3;
     const firstClassFlights = 2;
 
-    // Calculations
     const percent =
       totalFlights > 0
         ? ((firstClassFlights / totalFlights) * 100).toFixed(1)
         : 0;
 
-    // Populate UI
     document.getElementById("totalFlights").textContent = totalFlights;
     document.getElementById("firstClassFlights").textContent = firstClassFlights;
     document.getElementById("percentage").textContent = percent + "%";
 
-    // Popup controls
     function openExitTaxPopup() {
       document.getElementById("exitTaxPopup").style.display = "flex";
     }
